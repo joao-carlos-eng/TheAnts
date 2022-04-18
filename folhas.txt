@@ -1,0 +1,57 @@
+Rainha,1426001018
+Colônia de tatu-bola,1217653218
+Depósito de Comida I,666826880
+Depósito de Comida II,290980359
+Depósito de Comida III,620926603
+Fonte,1566755296
+Reservatório,215097655
+Reservatório II,1564081930
+Reservatório III,595052464
+Flora,755852810
+Depósito de Plantas,942812121
+Depósito de Plantas II,294954688
+Depósito de Plantas III,965072851
+Terra úmida,215100562
+Depósito de Terra úmida,884018681
+Depósito de Terra úmida II,124927512
+Depósito de Terra úmida III,257520760
+Pilha de Areia,712941052
+Depósito de areia,1296121825
+Depósito de Areia II,1058154147
+Depósito de areia III,2009701832
+Cortadora,2075980879
+Depósito de Fungos,1415725076
+Depósito de Fungos II,1082182568
+Depósito de Fungos III,367136293
+Fungos Nativos,1675007111
+Fungos Nativos Supremos,1363352535
+Ninho de formigas operárias,1344853349
+Campo de alimentação,813442885
+Pulgões,1320961441
+Habitat de Joaninhas,5505707
+Fábrica de recursos,842966535
+Túnel de recursos,607086781
+Depósito de troféus,692400640
+Centro de Rally Pro,857727019
+Fungos da Evolução,1392975277
+Ninho Especial,1141010084
+Habitat especial de formigas,1270197934
+Conjunto de Mutação,1567030899
+Centro de Construção,152741473
+Ninho de formigas guardiãs,1030059952
+Ninho de formigas atiradoras,482266080
+Ninho de formigas transportadoras,60010515
+Piscina de Cura,1239779616
+Fungos Tóxicos,1008693996
+Árvore Sentinela,1749528062
+Casulo Médio,1220674233
+Centro de Ralis I,264669512
+Centro de Ralis II,385259259
+Centro de Ralis III,510766231
+Entrada,145979592
+Flora de Mutação,1548536079
+Centro da Aliança,1040023324
+Túnel da tropa,1818770333
+Habitat de Insetos,1009241199
+ninho de insetos,808842804
+Fazenda de cupins,2005783148
