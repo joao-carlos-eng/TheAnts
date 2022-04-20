@@ -9,3 +9,6 @@ def criar_txt_de_folhas():
     for sheet in sheets:
         print(sheet.title, sheet.id)
         folha1.write(f'{sheet.title},{sheet.id}\n')
+
+def consultar_edificio(nome, nivel):
+
