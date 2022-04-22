@@ -1,19 +1,11 @@
 import discord
 from discord.ext import commands, tasks
+
+from calendario_acao_da_colonia import DIAS
 from funcoes_auxiliares import *
 import datetime
 
 bot = commands.Bot("NoY-")
-
-DIAS = [
-    'Dia 1: Segunda-feira',
-    'Dia 2: Terça-feira',
-    'Dia 3: Quarta-feira',
-    'Dia 4: Quinta-Feira',
-    'Dia 5: Sexta-feira',
-    'Dia 6: Sábado',
-    'Dia 7: Domingo'
-]
 
 
 @bot.event
@@ -41,13 +33,7 @@ async def send_hello(ctx):
 
 @tasks.loop(minutes=5)
 async def acao_da_colonia():
-    # indice_da_semana = datetime.date.weekday()
-    # print(indice_da_semana)
 
-    now = datetime.datetime.now()
-    indice_da_semana = now.weekday()
-    dia_da_semana = DIAS[indice_da_semana]
-    print(dia_da_semana)
 
     channel = bot.get_channel(957840649841963031)
 
