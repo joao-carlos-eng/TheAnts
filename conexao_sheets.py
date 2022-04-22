@@ -12,12 +12,12 @@ credentials = service_account.Credentials.from_service_account_file('credentials
 scoped_credentials = credentials.with_scopes(scopes)
 client = gspread.authorize(scoped_credentials)
 plan = client.open("The Ants - Edificios")
+acao_da_colonia = client.open("The Ants - Edificios")
 
 lis = [x.upper().split(',')[0] for x in open("folhas.txt", 'r', encoding='utf-8').readlines()]
 
 
 def tratar(valor: str):
-    # print("valor", valor)
     if valor.isalnum():
         return re.sub('[^0-9.,:a-zA-Z]', '', valor) or 0
     else:
