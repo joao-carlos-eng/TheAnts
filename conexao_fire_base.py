@@ -37,7 +37,7 @@ def put(tabela: str, dados):
 
 
 def get(tabela: str):
-    requisicao = requests.get(f'{link}/Edificios/{tabela}/.json')
+    requisicao = requests.get(f'{link}/{tabela}/.json')
     print(requisicao)
     # print(requisicao.json())
 

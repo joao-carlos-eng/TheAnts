@@ -26,6 +26,7 @@ def tratar(valor: str):
 
 if __name__ == "__main__":
     list_tabela = get(f'Edificios')
+    print(list_tabela)
     if type(list_tabela) is str:
         list_tabela = {}
 
@@ -34,7 +35,7 @@ if __name__ == "__main__":
     for i in plan.worksheets():
         print(i.title)
         if i.title.upper() in lis and i.title.lower() not in list_tabela:
-            ky = [str(re.sub('[^a-zA-Z ]', '', a)) for a in i.row_values(3)]
+            ky = [str(re.sub('[^a-zA-Z:() ]', '', a)) for a in i.row_values(3)]
             dt_0 = {}
 
             for x in range(4, 31):
