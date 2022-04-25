@@ -202,7 +202,7 @@ async def on_message(message):
 
 
 @bot.command(name='edificios')
-async def List_edificios(ctx):
+async def list_edificios(ctx):
     await ctx.send('Estes são os edificios que pode consultar em meu banco de dados:')
     await ctx.send(listar_edificios())
 
