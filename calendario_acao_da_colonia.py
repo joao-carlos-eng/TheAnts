@@ -1,5 +1,4 @@
 import datetime
-
 from conexao_sheets import acao_da_colonia
 from vars import DIAS
 

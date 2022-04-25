@@ -1,6 +1,5 @@
 import re
 import time
-
 import gspread
 from google.oauth2 import service_account
 from conexao_fire_base import *
