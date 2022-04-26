@@ -25,7 +25,7 @@ class Manager(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        conversas = open('../conversas.txt', 'a+')
+        conversas = open('conversas.txt', 'a+')
         print(message.author, message.content)
         conversas.write(f'{message.content}\n')
 
