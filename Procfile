@@ -1,1 +1,1 @@
-worker: python bot.pygit checkout -b main
+worker: python bot.py
