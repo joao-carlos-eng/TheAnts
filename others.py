@@ -1,4 +1,4 @@
-texto = """abafa-a-palhinha, abécula, abelhudo, abichanado, abutre, agarrado, agiota, agressivo, alarve, alcouceira, 
+texto1 = """abafa-a-palhinha, abécula, abelhudo, abichanado, abutre, agarrado, agiota, agressivo, alarve, alcouceira, 
 alcoviteira, aldrabão, aleivoso, amalucado, amarelo, amaneirado, amaricado, amigo-da-onça, analfabeto, analfabruto, 
 animal, anjinho, anormal, apanhado do clima, aparvalhada, apóstata, arrelampado, arrogante, artolas, arruaceiro, 
 aselha, asno, asqueroso, assassino, atarantada, atrasado mental, atraso de vida, avarento, avaro, ave rara, aventesma, 
@@ -65,4 +65,25 @@ tosco, totó, trabeculoso, trafulha, traiçoeiro, traidor, trambolho, trapaceiro
  xico esperto, zarolho, zé-ninguém, zelota, zero à esquerda
 """
 
-insultos = [insulto for insulto in texto.split(", ")]
+insultos = [insulto for insulto in texto1.split(", ")]
+
+texto2 = 'Bela • Amorosa • Inteligente • Destemida • Adorável • Apaixonante • Bondosa • Trabalhadora • Brilhante • ' \
+         'Carinhosa • Charmosa • Confiante • Doce • Delicada • Educada • Corajosa • Esperta • Forte • Esbelta • ' \
+         'Calorosa • Simpática • Espetacular • Serena • Glamurosa • Humilde • Impressionante • Irresistível • Jeitosa' \
+         ' • Incrível • Única • Linda • Maravilhosa • Mágica • Majestosa • Sexy • Otimista • Perseverante • Poderosa' \
+         ' • Protetora • Prodígio • Protetora • Romântica • Simpática • Sensacional • Sagaz • Sedutora • Sofisticada' \
+         ' • Talentosa • Terna • Verdadeira • Visionária • Livre • Modesta • Meiga • Legítima • Iluminada'
+
+texto3 = "Carinhoso • Amoroso • Belo • Lindo • Destemido • Gracioso • Apaixonante • Bondoso • Meigo • Protetor • " \
+         "Corajoso • Sereno • Forte • Esbelto • Poderoso • Único • Incrível • Esbelto • Maravilhoso • Modesto • " \
+         "Humilde • Charmoso • Talentoso • Simpático • Legítimo • Visionário • Talentoso • Terno • Livre • Caloroso • " \
+         "Sensacional • Confiante • Verdadeiro • Irresistível • Doce • Justo • Gentil • Intelectual • Impecável • " \
+         "Impressionante • Genial • Formoso • Fofo • Franco • Leal • Encantador • Extraordinário • Especial • " \
+         "Delicado • Deslumbrante • Elegante • Ideal • Idílico • Incansável • Devoto • Equilibrado • Extrovertido "
+
+
+def elogio(pronome):
+    if pronome == 'F':
+        return [insulto for insulto in texto2.split(" • ")]
+    else:
+        return [insulto for insulto in texto3.split(" • ")]
