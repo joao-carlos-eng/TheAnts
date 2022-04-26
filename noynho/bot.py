@@ -12,7 +12,7 @@ bot = commands.Bot("NoY-")
 def load_cog(bot):
     bot.load_extension('manager')
     bot.load_extension('tasks.task1')
-    for file in os.listdir('commands'):
+    for file in os.listdir('../commands'):
 
         if file.endswith('.py'):
             cog = file[:-3]

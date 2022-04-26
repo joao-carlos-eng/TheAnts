@@ -4,7 +4,7 @@ import time
 from discord.ext import commands
 from discord.ext.commands import MissingRequiredArgument, CommandNotFound
 
-from bot import CHANNEL1, ADMIN
+from noynho.bot import CHANNEL1, ADMIN
 from calendario_acao_da_colonia import Acao
 
 
@@ -25,7 +25,7 @@ class Manager(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        conversas = open('conversas.txt', 'a+')
+        conversas = open('../conversas.txt', 'a+')
         print(message.author, message.content)
         conversas.write(f'{message.content}\n')
 

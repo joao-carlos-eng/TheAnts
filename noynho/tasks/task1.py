@@ -1,6 +1,6 @@
 import datetime
 from discord.ext import commands, tasks
-from bot import CHANNEL1
+from noynho.bot import CHANNEL1
 from calendario_acao_da_colonia import Acao
 
 last_hour = datetime.datetime.now()
