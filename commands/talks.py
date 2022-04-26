@@ -1,6 +1,7 @@
+from decouple import config
 from discord.ext import commands
 
-from bot import ADMIN
+ADMIN = config('admin')
 
 
 class Talks(commands.Cog):
@@ -54,7 +55,6 @@ class Talks(commands.Cog):
             quit()
         else:
             await ctx.send(f'eu te conheço {ctx.author} ?')
-
 
 
 def setup(bot):

@@ -21,33 +21,33 @@ class Acao:
         self.warzone = self.plan.cell(2, 1).value
 
     def acao(self, prox_dia):
-        print(self.hours)
         if self.hours < 21:
             line = self.hours + 6
             if self.minute > 5:
-                print(f'Açao da colônia em andamento, termina em {59 - self.minute}min')
+                # print(f'Açao da colônia em andamento, termina em {59 - self.minute}min')
                 self.message.append(f'Açao da colônia em andamento, termina em {59 - self.minute}min')
-                print(f'{self.plan.cell(line, 1).value} ==> {self.plan.cell(line, 2).value}')
+                # print(f'{self.plan.cell(line, 1).value} ==> {self.plan.cell(line, 2).value}')
                 self.message.append(f'{self.plan.cell(line, 1).value} ==> {self.plan.cell(line, 2).value}')
             else:
-                print(f'Estamos na fase de intervalo, o proximo ação começa em {5 - self.minute}')
+                # print(f'Estamos na fase de intervalo, o proximo ação começa em {5 - self.minute}')
                 self.message.append(f'Estamos na fase de intervalo, o proximo ação começa em {5 - self.minute}')
-                print(f'{self.plan.cell(line, 1).value} ==> {self.plan.cell(line, 2).value}')
+                # print(f'{self.plan.cell(line, 1).value} ==> {self.plan.cell(line, 2).value}')
                 self.message.append(f'{self.plan.cell(line, 1).value} ==> {self.plan.cell(line, 2).value}')
         elif self.hours >= 21:
             line = self.hours - 18
             if self.minute > 5:
-                print(f'Açao da colônia em andamento, termina em {59 - prox_dia.minute}min')
+                # print(f'Açao da colônia em andamento, termina em {59 - prox_dia.minute}min')
                 self.message.append(f'Açao da colônia em andamento, termina em {59 - prox_dia.minute}')
-                print(f'{prox_dia.plan.cell(line, 1).value} ==> {prox_dia.plan.cell(line, 2).value}')
+                # print(f'{prox_dia.plan.cell(line, 1).value} ==> {prox_dia.plan.cell(line, 2).value}')
                 self.message.append(f'{prox_dia.plan.cell(line, 1).value} ==> {prox_dia.plan.cell(line, 2).value}')
             else:
-                print(f'Estamos na fase de intervalo, o proximo ação começa em {5 - prox_dia.minute}')
+                # print(f'Estamos na fase de intervalo, o proximo ação começa em {5 - prox_dia.minute}')
                 self.message.append(f'Estamos na fase de intervalo, o proximo ação começa em {5 - prox_dia.minute}')
-                print(f'{prox_dia.plan.cell(line, 1).value} ==> {prox_dia.plan.cell(line, 2).value}')
+                # print(f'{prox_dia.plan.cell(line, 1).value} ==> {prox_dia.plan.cell(line, 2).value}')
                 self.message.append(f'{prox_dia.plan.cell(line, 1).value} ==> {prox_dia.plan.cell(line, 2).value}')
 
         self.acao_da_colonia = self.plan.cell(line, 2).value
+        # print(self.message)
         return self.message
 
 

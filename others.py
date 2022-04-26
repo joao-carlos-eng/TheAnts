@@ -1,3 +1,5 @@
+import random
+
 texto1 = """abafa-a-palhinha, abécula, abelhudo, abichanado, abutre, agarrado, agiota, agressivo, alarve, alcouceira, 
 alcoviteira, aldrabão, aleivoso, amalucado, amarelo, amaneirado, amaricado, amigo-da-onça, analfabeto, analfabruto, 
 animal, anjinho, anormal, apanhado do clima, aparvalhada, apóstata, arrelampado, arrogante, artolas, arruaceiro, 
@@ -80,10 +82,41 @@ texto3 = "Carinhoso • Amoroso • Belo • Lindo • Destemido • Gracioso �
          "Sensacional • Confiante • Verdadeiro • Irresistível • Doce • Justo • Gentil • Intelectual • Impecável • " \
          "Impressionante • Genial • Formoso • Fofo • Franco • Leal • Encantador • Extraordinário • Especial • " \
          "Delicado • Deslumbrante • Elegante • Ideal • Idílico • Incansável • Devoto • Equilibrado • Extrovertido "
+texto4 = ""
+elogios = [elog.lower() for elog in texto3.split(' • ')] + [elog.lower() for elog in texto2.split(' • ')]
 
 
-def elogio(pronome):
+def elogio(pronome='M'):
     if pronome == 'F':
         return [insulto for insulto in texto2.split(" • ")]
     else:
         return [insulto for insulto in texto3.split(" • ")]
+
+
+mod1 = ['Olá!', 'Oi!', 'Qual é o seu nome?', 'Seja bem-vindo(a)!', 'E aí!', 'Opa!', 'Fala aí, cara!', 'Beleza,brother?',
+        'Qual é?']
+
+mod2 = ['Como vai?', 'Como vão as coisas?', 'Como você tem estado?', 'Como você tem estado passado?',
+        'O que está acontecendo?', 'E aí? O que você me conta?', 'O que você conta de novo?', 'Quais são as novidades?',
+        'Onde você esteve esses anos?', 'Por onde você andava?', 'Quanto tempo!', 'Faz um tempão que eu não te vejo.',
+        'Há quanto tempo não te vejo!', 'Você sumiu!', 'Prazer em conhecê-lo!', 'Prazer em conhecer você também!',
+        'O prazer é meu!', 'É sempre um prazer te ver!']
+
+mod3 = ['Até logo!', 'Até a próxima!', 'Até amanhã!', 'Tchau!', 'Prazer em conhecê-lo!', 'Se cuida!',
+        'Bom fim de semana!', 'Tenha um bom dia!', 'Até!']
+
+
+def saudacao(frase):
+    print('entrou na saudacao: frase--',frase)
+    if 'bom dia' in frase.lower():
+        return 'Bom dia !'
+    elif 'boa tarde' in frase.lower():
+        return 'Boa tarde !'
+    if 'boa noite' in frase.lower():
+        return 'Boa noite !'
+    if any(word in frase for word in mod1):
+        return random.choice(mod1)
+    elif any(word in frase for word in mod2):
+        return random.choice(mod2)
+    elif any(word in frase for word in mod3):
+        return random.choice(mod3)

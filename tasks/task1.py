@@ -1,9 +1,12 @@
 import datetime
+import asyncio
+from decouple import config
 from discord.ext import commands, tasks
-from bot import CHANNEL1
 from calendario_acao_da_colonia import Acao
 
 last_hour = datetime.datetime.now()
+
+CHANNEL = int(config('channel1'))
 
 
 class Tasks(commands.Cog):
@@ -12,15 +15,18 @@ class Tasks(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
+        channel = self.bot.get_channel(CHANNEL)
+        await channel.send('Eba, me atualizei.')
+
         self.acao_da_colonia.start()
 
-    @tasks.loop(seconds=15)
+    @tasks.loop(minutes=1)
     async def acao_da_colonia(self):
         global last_hour
-        channel = self.bot.get_channel(CHANNEL1)
+        channel = self.bot.get_channel(CHANNEL)
         now = datetime.datetime.now()
 
-        if now.hour != last_hour:
+        if now.hour != last_hour or True:
             last_hour = now.hour
             acao = Acao(now.weekday())
             if now.weekday() == 6:
@@ -31,10 +37,17 @@ class Tasks(commands.Cog):
 
             if now.minute == 0:
                 msg = '\n'.join(acao.message)
-                print(msg)
-                await channel.send(msg)
+                resp = await channel.send(msg)
+                await asyncio.sleep(59)
+                await resp.delete()
             elif now.minute == 30:
-                await channel.send(f'Estamos na metade do ação de \"{acao.acao_da_colonia}\"')
+                resp = await channel.send(f'Estamos na metade do ação de \"{acao.acao_da_colonia}\"')
+                await asyncio.sleep(29*60)
+                await resp.delete()
+            elif now.minute == 5:
+                resp = await channel.send(f'Começou ação da colônia de \"{acao.acao_da_colonia}\"')
+                await asyncio.sleep(4 * 60)
+                await resp.delete()
 
 
 def setup(bot):
