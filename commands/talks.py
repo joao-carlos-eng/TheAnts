@@ -1,6 +1,6 @@
 from discord.ext import commands
 
-from noynho.bot import ADMIN
+from bot import ADMIN
 
 
 class Talks(commands.Cog):

@@ -1,10 +1,11 @@
 import datetime
+import random
 import time
-
+from others import insultos
 from discord.ext import commands
 from discord.ext.commands import MissingRequiredArgument, CommandNotFound
 
-from noynho.bot import CHANNEL1, ADMIN
+from bot import CHANNEL1, ADMIN
 from calendario_acao_da_colonia import Acao
 
 
@@ -27,24 +28,27 @@ class Manager(commands.Cog):
     async def on_message(self, message):
         conversas = open('conversas.txt', 'a+')
         print(message.author, message.content)
-        conversas.write(f'{message.content}\n')
+        msg = message.content
+        conversas.write(f'{msg}\n')
 
-        if message.author == self.bot.user and 'destroy' not in message.content:
+        if message.author == self.bot.user and 'destroy' not in msg:
             return
 
         if message.content == message.content.upper() and message.content.isalnum() \
                 and not message.content.isnum():
             await message.channel.send(f'por favor {message.author.name}, não guite com seus colegas.')
 
-        if 'noynho'.lower() in message.content.lower() and message.author.name != ADMIN:
-            await message.channel.send(f'{message.author.name} me chamou ? '
-                                       f'ainda não entendo muito vocês, mais estou aprendendo :smiling_face_with_tear:')
-
-            if message.author.name != ADMIN:
-                await message.channel.send(f'então tenham paciencia e se precisarem de algo falem com meu pai.')
-
-        if 'noynho'.lower() in message.content.lower() and message.author.name == ADMIN:
+        if message.content.startswith('noynho') and message.author.name != ADMIN:
+            await message.channel.send(f'{message.author.name} me chamou ? :yes:')
+        elif message.content.startswith('noynho') and message.author.name == ADMIN and not \
+                any(word in msg for word in insultos):
             await message.channel.send(f'oi pai !?')
+        elif message.content.startswith('noynho') and message.author.name == ADMIN and \
+                any(word in msg for word in insultos):
+            await message.channel.send(f'maguou :disappointed_relieved:')
+
+        if message.content.startswith('noynho') and any(word in msg for word in insultos):
+            await message.channel.send(f'{message.author.name} {random.choice(insultos)}:unamused:')
 
         if "malrry".lower() in message.content.lower():
             await message.send("@MalrRy tão falando de voce :eyes:")
