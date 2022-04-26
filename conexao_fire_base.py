@@ -1,5 +1,4 @@
 import requests
-import json
 
 link = "https://theantsbot-default-rtdb.firebaseio.com/"
 
@@ -34,7 +33,7 @@ def put(tabela: str, dados):
         """
     requisicao = requests.put(f'{link}/{tabela}.json', dados)
     print(requisicao)
-    print(requisicao.text)
+    # print(requisicao.text)
 
 
 def get(tabela: str):
