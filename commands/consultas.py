@@ -1,6 +1,10 @@
+import asyncio
+
 from discord.ext import commands
 
 from funcoes_auxiliares import consultar_edificio, listar_edificios
+from manager import ADMIN
+from others import elogios, insultos
 
 
 class Consults(commands.Cog):
@@ -27,6 +31,26 @@ class Consults(commands.Cog):
     async def list_edificios(self, ctx):
         await ctx.send('Estes são os edificios que pode consultar em meu banco de dados:')
         await ctx.send(listar_edificios())
+
+    @commands.command(name='depurar')
+    async def depurar(self, ctx, key):
+        list = []
+        if ctx.author.name == ADMIN:
+            if key == 'elogios':
+                for elogio in elogios:
+                    resp = await ctx.send(f'{elogio}')
+                    list.append(resp)
+
+            elif key == 'insultos':
+                for insulto in insultos:
+                    resp = await ctx.send(f'{insulto}')
+                    list.append(resp)
+
+            for x in list:
+                await asyncio.sleep(5)
+                await x.delete()
+
+            await ctx.send('acabei !!')
 
 
 def setup(bot):
