@@ -44,10 +44,10 @@ def get(tabela: str):
     return requisicao.json()
 
 
-if __name__ == '__main__':
-    data = {'LVL': '8', 'Comida': 'None', 'Planta': 'None', 'Fungo ': 'None', 'Terra mida ': 'None', 'Areia': 'None',
-            'Melado ': 'None', 'Tempo hms ': 'None', 'Dias': 'None', 'Horas': '0', 'P Aumento': '247',
-            'Hora dh ': '0d3h', 'Diamantes ': '419', 'Potncia P': 'None', 'Formiga Pop': '0', 'Requisito ': 'None'}
+def cadastrar_membro(tabela: str):
+    ...
 
-    test = open('jj.json', 'w+')
-    test.write(f'{data}')
+
+if __name__ == '__main__':
+
+    ...
