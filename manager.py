@@ -1,11 +1,9 @@
 import datetime
 import random
 import time
-
 import discord
 from decouple import config
 from pytz import timezone
-
 from others import insultos, saudacao, elogio, elogios
 from discord.ext import commands
 from discord.ext.commands import MissingRequiredArgument, CommandNotFound
