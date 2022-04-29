@@ -10,23 +10,24 @@ class Talks(commands.Cog):
 
     @commands.command(name='oi')
     async def send_hello(self, ctx, cnt2=None):
-        name = ctx.author.name
-
-        if name == "MalrRy":
-            await ctx.send(f"Oiii {name}-Chan")
-        elif name == "Morfeu":
-            await ctx.send(f'Oi {name}, Gatão !!!')
-        elif name == 'patrico' and cnt2 != 0:
-            resposta = "Fala chato "
-            await ctx.send(resposta)
-        elif name == 'patrico' and cnt2 == 0:
-            resposta = "Fala Patrick "
-            await ctx.send(resposta)
-        elif name != ADMIN:
-            resposta = "Olá, " + name
-            await ctx.send(resposta)
-        else:
-            await ctx.send('Como vai Mi Lord ?')
+        await ctx.send('comando invalido !')
+    #     name = ctx.author.name
+    #
+    #     if name == "MalrRy":
+    #         await ctx.send(f"Oiii {name}-Chan")
+    #     elif name == "Morfeu":
+    #         await ctx.send(f'Oi {name}, Gatão !!!')
+    #     elif name == 'patrico' and cnt2 != 0:
+    #         resposta = "Fala chato "
+    #         await ctx.send(resposta)
+    #     elif name == 'patrico' and cnt2 == 0:
+    #         resposta = "Fala Patrick "
+    #         await ctx.send(resposta)
+    #     elif name != ADMIN:
+    #         resposta = "Olá, " + name
+    #         await ctx.send(resposta)
+    #     else:
+    #         await ctx.send('Como vai Mi Lord ?')
 
     @commands.command(name='acorda')
     async def i_be_back(self, ctx, cnt=None):
@@ -59,3 +60,21 @@ class Talks(commands.Cog):
 
 def setup(bot):
     bot.add_cog(Talks(bot))
+
+
+def ola(name):
+    if name == "MalrRy":
+        return "Oiii {name}yyy"
+    elif name == "Morfeu":
+        return 'Oi {name}, Gatão !!!'
+    elif name == 'patrico' and cnt2 != 0:
+        resposta = "Fala chato "
+        return resposta
+    elif name == 'patrico' and cnt2 == 0:
+        resposta = "Fala Patrick "
+        return resposta
+    elif name != ADMIN:
+        resposta = "Olá, " + name
+        return resposta
+    else:
+        return 'Como vai Mi Lord ?'

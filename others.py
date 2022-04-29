@@ -107,7 +107,7 @@ mod3 = ['Até logo!', 'Até a próxima!', 'Até amanhã!', 'Tchau!', 'Prazer em 
 
 
 def saudacao(frase):
-    print('entrou na saudacao: frase--',frase)
+    print('entrou na saudacao: frase--', frase)
     if 'bom dia' in frase.lower():
         return 'Bom dia !'
     elif 'boa tarde' in frase.lower():

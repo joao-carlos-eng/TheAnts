@@ -46,7 +46,7 @@ class Manager(commands.Cog):
             await message.channel.send(f'por favor {message.author.name}, não grite.')
 
         if msg.startswith('noynho') and message.author.name != ADMIN and not any(word in msg for word in insultos)\
-                and not any(word in msg for word in elogios):
+                and not any(word in msg for word in elogios) and not saudacao(msg):
             await message.channel.send(f'{message.author.name} me chamou ? :eyes:')
         elif msg.startswith('noynho') and message.author.name == ADMIN and not any(word in msg for word in insultos)\
                 and not any(word in msg for word in elogios):
