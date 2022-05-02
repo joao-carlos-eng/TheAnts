@@ -18,7 +18,7 @@ list_dialog = [
     'aqui nas nuvens sim, e ai na terra ?'
     'Qual o seu nome?',
     'Noynho, seu amigo bot',
-    'Por que seu nome é Noynho?',
+    'Por que seu nome é Noynho ?',
     'Noynho é meu nome porque sou o bot da aliança NoY(No Mercy)',
     'Prazer em te conhecer',
     'Igualmente meu querido',
@@ -36,9 +36,10 @@ list_dialog = [
     'Sou um chatbot e gosto de algoritmos',
     'Conte uma história',
     'te amo',
+    'essa frase é muito forte.',
     'Acho que vou desistir',
-    'TATAKAI, TATAKAI, TATAKAI, TATAKAI, TATAKAI, TATAKAI, TATAKAI,',
-    'TATAKAI, TATAKAI, TATAKAI, TATAKAI, TATAKAI, TATAKAI,',
+    'TATAKAI, TATAKAI, TATAKAI, TATAKAI, TATAKAI, TATAKAI, TATAKAI...',
+    'TATAKAI, TATAKAI, TATAKAI, TATAKAI, TATAKAI, TATAKAI...',
     'essa é uma expressão forte',
     'Tudo começou com a forja dos Grandes Aneis. Três foram dados aos Elfos, imortais... os mais sabios e belos de '
     'todos os seres. Sete, aos Senhores-Anões...',

@@ -5,6 +5,7 @@ import discord
 from decouple import config
 from pytz import timezone
 from Users.UsuariosDiscord import Players
+from Users.dic_id import ids
 from chatbot.chatbot import *
 from conexao_fire_base import get
 from others import insultos, saudacao, elogio, elogios
@@ -31,8 +32,7 @@ class Manager(commands.Cog):
     async def on_ready(self):
         self.data = {}
         print(f'estou pronto !! Estou conectado como {self.bot.user}')
-        canal = self.bot.get_guild()
-        await canal.send(':eyes:')
+        await self.bot.get_channel('burburinho').send(':eyes:')
 
     @commands.Cog.listener()
     async def on_command_error(self, ctx, error):
@@ -60,16 +60,15 @@ class Manager(commands.Cog):
         if msg == msg.upper() and msg.isalnum() and not msg.isnumeric():
             await message.channel.send(f'por favor {message.author.name}, não grite.')
 
-        if chamada1 and message.author.name != ADMIN and not any(word.lower() in msg.lower() for word in insultos) \
-                and not any(word.lower() in msg for word in elogios) and not saudacao(msg):
-            await message.channel.send(f'{message.author.name} me chamou ? :eyes:')
+        # if chamada1 and message.author.name != ADMIN and not any(word.lower() in msg.lower() for word in insultos) \
+        #         and not any(word.lower() in msg for word in elogios) and not saudacao(msg):
+        #     await message.channel.send(f'{message.author.name} me chamou ? :eyes:')
 
         # elif chamada1 and message.author.name == ADMIN and not any(word.lower() in msg.lower() for word in insultos) \
         #         and not any(word.lower() in msg.lower() for word in elogios):
         #     await message.channel.send(f'oi pai')
 
         elif chamada1 and message.author.name == ADMIN and any(word.lower() in msg.lower() for word in insultos):
-            print()
             await message.channel.send(f'maguou :disappointed_relieved:')
 
         elif chamada1 and any(word.lower() == msg.lower() for word in insultos):
@@ -84,7 +83,7 @@ class Manager(commands.Cog):
                                        f'{random.choice(elogio("F" if message.author.name == "MalrRy" else "M"))}')
         elif chamada1 and not any(word.lower() in msg.lower() for word in insultos) \
                 and not any(word.lower() in msg.lower() for word in elogios) and not saudacao(msg):
-            ky = message.author.name.lower() + " ~ " + msg
+            ky = ids[message.author.id] + " ~ " + msg
             resp = chatbot.get_response(ky)
             print(msg)
             if float(resp.confidence) > 0.2:
