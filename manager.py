@@ -4,6 +4,9 @@ import time
 import discord
 from decouple import config
 from pytz import timezone
+from Users.UsuariosDiscord import Players
+from chatbot.chatbot import *
+from conexao_fire_base import get
 from others import insultos, saudacao, elogio, elogios
 from discord.ext import commands
 from discord.ext.commands import MissingRequiredArgument, CommandNotFound
@@ -21,11 +24,15 @@ intents.members = True
 
 class Manager(commands.Cog):
     def __init__(self, bot):
+        self.data = None
         self.bot = bot
 
     @commands.Cog.listener()
     async def on_ready(self):
+        self.data = {}
         print(f'estou pronto !! Estou conectado como {self.bot.user}')
+        canal = self.bot.get_guild()
+        await canal.send(':eyes:')
 
     @commands.Cog.listener()
     async def on_command_error(self, ctx, error):
@@ -36,11 +43,16 @@ class Manager(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        conversas = open('conversas.txt', 'a+')
+        # list_players = get('Players').values()
+        # if message.author.name not in [x['nickDiscord'].lower() for x in list_players] and \
+        #         message.guild == 'Servidor de desenvolvimento':
+        #     player = Players(message.author.id)
+        #     player.criar()
+
         print(message.author, message.content)
         msg = message.content
         chamada1 = msg.lower().startswith('noynho')
-        conversas.write(f'{message.author, message.content}\n')
+        # conversas.write(f'{message.author, message.content}\n')
 
         if message.author == self.bot.user and 'destroy' not in msg:
             return
@@ -49,12 +61,12 @@ class Manager(commands.Cog):
             await message.channel.send(f'por favor {message.author.name}, não grite.')
 
         if chamada1 and message.author.name != ADMIN and not any(word.lower() in msg.lower() for word in insultos) \
-                and not any(word.lower() in msg for word in elogios):
+                and not any(word.lower() in msg for word in elogios) and not saudacao(msg):
             await message.channel.send(f'{message.author.name} me chamou ? :eyes:')
 
-        elif chamada1 and message.author.name == ADMIN and not any(word.lower() in msg.lower() for word in insultos) \
-                and not any(word.lower() in msg.lower() for word in elogios):
-            await message.channel.send(f'oi pai')
+        # elif chamada1 and message.author.name == ADMIN and not any(word.lower() in msg.lower() for word in insultos) \
+        #         and not any(word.lower() in msg.lower() for word in elogios):
+        #     await message.channel.send(f'oi pai')
 
         elif chamada1 and message.author.name == ADMIN and any(word.lower() in msg.lower() for word in insultos):
             print()
@@ -70,16 +82,27 @@ class Manager(commands.Cog):
         elif chamada1 and any(word.lower() in msg.lower() for word in elogios):
             await message.channel.send(f'Obrigado, {message.author.name} você é '
                                        f'{random.choice(elogio("F" if message.author.name == "MalrRy" else "M"))}')
+        elif chamada1 and not any(word.lower() in msg.lower() for word in insultos) \
+                and not any(word.lower() in msg.lower() for word in elogios) and not saudacao(msg):
+            ky = message.author.name.lower() + " ~ " + msg
+            resp = chatbot.get_response(ky)
+            print(msg)
+            if float(resp.confidence) > 0.2:
+                print("Noynho: ", resp)
+                await message.channel.send(resp)
+            else:
+                await message.channel.send("Não entendi :(")
+                print("Não entendi :(")
 
         if 'noynho' in msg.lower() and saudacao(msg) and message.author != self.bot.user:
-            await message.channel.send(f'{message.author.name}, {saudacao(msg)}:wink:')
+            await message.channel.send(f'{message.author.name}, {saudacao(msg)} :wink:')
 
         if 'noynho' in msg.lower() and 'desculp' in msg.lower() and message.author != self.bot.user:
             await message.channel.send(f'Tudo bem !! Errar é humano, ainda bem que sou uma maquina :yawning_face:')
 
         if message.author == self.bot.user and 'destroy' in msg:
             time.sleep(60)
-            await msg.channel.delete()
+            await message.channel.delete()
 
         if "noynho é mentira" in msg.lower() and message.author.name == ADMIN:
             await msg.channel.send("entendido papi, vou ignorar os comando desse usuario")

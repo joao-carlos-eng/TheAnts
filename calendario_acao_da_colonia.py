@@ -8,7 +8,7 @@ from vars import DIAS
 class Acao:
     def __init__(self, indice_da_semana):
         self.timezone = timezone('America/Sao_Paulo')
-        self.indice_da_semana = indice_da_semana + 1
+        self.indice_da_semana = indice_da_semana
         self.dia_corrent = DIAS[self.indice_da_semana]
         self.plan = acao_da_colonia.worksheet(self.dia_corrent)
         self.warzone = None
@@ -21,7 +21,7 @@ class Acao:
         self.evento_warzone()
 
     def evento_warzone(self):
-        self.warzone = self.plan.cell(2, 1).value
+        self.warzone = self.plan.cell(1, 1).value.split(':')[1]
 
     def acao(self, next_day):
         line = 0
@@ -59,7 +59,8 @@ if __name__ == "__main__":
     now = datetime.datetime.now(tz=timezone('America/Sao_Paulo'))
     acao = Acao(now.weekday())
 
-    print(DIAS[now.weekday()])
+    print(now.weekday())
+    print(DIAS[6])
     print(datetime.datetime.now())
 
     if now.weekday() == 6:
@@ -68,4 +69,4 @@ if __name__ == "__main__":
         prox_dia = Acao(now.weekday() + 1)
     acao.acao(prox_dia)
 
-    print(acao.message[1])
+    print(acao.warzone)

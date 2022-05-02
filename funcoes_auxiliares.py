@@ -29,7 +29,6 @@ def consultar_edificio(nome, nivel):
 
     result = ''
     for k, v in response.items():
-        text = ''
         if 'Tempo (h:m:s)' in k:
             text = k.replace('Tempo (h:m:s)', 'Tempo(h:mn:s)')
         elif 'time(h:m:s)' in k:

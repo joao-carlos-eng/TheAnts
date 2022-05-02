@@ -39,6 +39,7 @@ class Tasks(commands.Cog):
             self.last_acao.acao(prox_dia)
 
         acao_da_colonia = self.last_acao.acao_da_colonia
+
         if now.minute == 0:
             msg = '\n'.join(self.last_acao.message)
             resp = await channel.send(msg)
@@ -57,7 +58,7 @@ class Tasks(commands.Cog):
             await asyncio.sleep(29 * 60)
             await resp.delete()
 
-        elif now.minute == 15:
+        elif now.minute == 45:
 
             resp = await channel.send(f'\"{acao_da_colonia}\" acaba em 15min. Fique atento')
             await asyncio.sleep(14 * 60)

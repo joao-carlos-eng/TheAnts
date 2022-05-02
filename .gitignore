@@ -158,3 +158,5 @@ noynho/.env
 .env
 noynho/conversas.txt
 >>>>>>> Stashed changes
+conversas.txt
+database.sqlite3

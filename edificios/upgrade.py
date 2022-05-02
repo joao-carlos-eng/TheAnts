@@ -1,3 +1,6 @@
+from edificios.edificio import Edificio
+
+
 class Requirements:
     def __init__(self, *args):
         self.args = args
@@ -11,3 +14,7 @@ class Requirements:
 
         for x in self.args:
             pass
+
+
+if __name__ == '__main__':
+    ed = Edificio()
