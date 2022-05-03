@@ -2,18 +2,18 @@ import requests
 
 from conexao_sheets import plan
 from conexao_fire_base import get
-import json
-import csv
-import gzip
-import io
-from bs4 import BeautifulSoup
-from unicodedata import normalize
+# import json
+# import csv
+# import gzip
+# import io
+# from bs4 import BeautifulSoup
+# from unicodedata import normalize
 
 sheets = plan.worksheets()
 
 
 def criar_txt_de_folhas():
-    folha1 = open('../folhas.txt', '+w', encoding='utf-8')
+    folha1 = open('folhas.txt', '+w', encoding='utf-8')
 
     for sheet in sheets:
         print(sheet.title, sheet.id)

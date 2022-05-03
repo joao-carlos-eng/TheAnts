@@ -4,7 +4,7 @@ from decouple import config
 from discord.ext import commands, tasks
 from pytz import timezone
 
-from noynho.calendario_acao_da_colonia import Acao
+from calendario_acao_da_colonia import Acao
 
 fuso = timezone('America/Sao_Paulo')
 CHANNEL = int(config('channel1'))
