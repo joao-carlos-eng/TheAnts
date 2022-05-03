@@ -2,9 +2,9 @@ import asyncio
 
 from discord.ext import commands
 
-from funcoes_auxiliares import consultar_edificio, listar_edificios
-from manager import ADMIN
-from others import elogios, insultos
+from noynho.funcoes_auxiliares import consultar_edificio, listar_edificios
+from noynho.manager import ADMIN
+from noynho.others import elogios, insultos
 
 
 class Consults(commands.Cog):

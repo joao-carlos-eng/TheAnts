@@ -1,4 +1,5 @@
 import random
+import re
 
 texto1 = """abafa-a-palhinha, abécula, abelhudo, abichanado, abutre, agarrado, agiota, agressivo, alarve, alcouceira, 
 alcoviteira, aldrabão, aleivoso, amalucado, amarelo, amaneirado, amigo-da-onça, analfabeto, analfabruto, animal, 
@@ -66,7 +67,7 @@ troglodita, trombalazanas, trombeiro, trombudo, trouxa, unhas de fome, untuoso, 
 vaidoso, valdevinos, vândalo, velhaco, velhadas, vendido, verme, vesgo, víbora, viciado, vigarista, vígaro, vil, 
 vilão, vira-casacas, Xé-xé, xico esperto, zarolho, zé-ninguém, zelota, zero à esquerda"""
 
-insultos = [insulto for insulto in texto1.split(", ")]
+insultos = [re.sub("[\n]", '', insulto) for insulto in texto1.split(", ")]
 
 texto2 = 'Bela • Amorosa • Inteligente • Destemida • Adorável • Apaixonante • Bondosa • Trabalhadora • Brilhante • ' \
          'Carinhosa • Charmosa • Confiante • Doce • Delicada • Educada • Corajosa • Esperta • Forte • Esbelta • ' \
@@ -95,7 +96,7 @@ def elogio(pronome='M'):
 mod1 = ['Olá!', 'Oi!', 'Qual é o seu nome?', 'Seja bem-vindo(a)!', 'E aí!', 'Opa!', 'Fala aí, cara!', 'Beleza brother?',
         'Qual é?']
 
-mod2 = ['Como vai?', 'Como vão as coisas?', 'Como você tem estado?', 'Como você tem estado passado?',
+mod2 = ['Como vai?', 'Como vão as coisas?', 'Como você tem estado?', 'Como você tem passado?',
         'O que está acontecendo?', 'E aí? O que você me conta?', 'O que você conta de novo?', 'Quais são as novidades?',
         'Onde você esteve esses anos?', 'Por onde você andava?', 'Quanto tempo!', 'Faz um tempão que eu não te vejo.',
         'Há quanto tempo não te vejo!', 'Você sumiu!', 'Prazer em conhecê-lo!', 'Prazer em conhecer você também!',
@@ -113,12 +114,27 @@ def saudacao(frase):
         return 'Boa tarde !'
     if 'boa noite' in frase.lower():
         return 'Boa noite !'
-    if any(word in frase for word in mod1):
+    if any(word.lower() in frase.lower() for word in mod1):
         return random.choice(mod1)
-    elif any(word in frase for word in mod2):
+    elif any(word.lower() in frase.lower() for word in mod2):
         return random.choice(mod2)
-    elif any(word in frase for word in mod3):
+    elif any(word.lower() in frase.lower() for word in mod3):
         return random.choice(mod3)
 
     return False
 
+
+def insultar(frase, pronome='M'):
+    if pronome == 'F':
+        lista = [insulto for insulto in insultos if insulto.endswith('a')]
+    else:
+        lista = [insulto for insulto in insultos if insulto.endswith('o')]
+
+    if any(word.lower() in frase.lower().split() for word in insultos):
+        return random.choice(lista)
+
+    # print(list(lista))
+
+
+if __name__ == "__main__":
+    print(insultar('Noynho vil', 'N'))

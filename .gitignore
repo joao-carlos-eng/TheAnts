@@ -113,7 +113,7 @@ celerybeat.pid
 
 # Environments
 noynho/.env
-.env
+noynho/.env
 env/
 venv/
 ENV/
@@ -155,6 +155,6 @@ noynho/.env
 noynho/.env
 noynho/.env
 =======
-.env
+noynho/.env
 noynho/conversas.txt
 >>>>>>> Stashed changes

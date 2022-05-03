@@ -4,10 +4,10 @@ import time
 import discord
 from decouple import config
 from pytz import timezone
-from others import insultos, saudacao, elogio, elogios
+from others import saudacao, elogio, elogios, insultar
 from discord.ext import commands
 from discord.ext.commands import MissingRequiredArgument, CommandNotFound
-from calendario_acao_da_colonia import Acao
+from noynho.calendario_acao_da_colonia import Acao
 
 fuso = timezone('America/Sao_Paulo')
 hora_atuais = datetime.datetime.now(tz=fuso)
@@ -36,11 +36,9 @@ class Manager(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        conversas = open('conversas.txt', 'a+')
         print(message.author, message.content)
         msg = message.content
         chamada1 = msg.lower().startswith('noynho')
-        conversas.write(f'{message.author, message.content}\n')
 
         if message.author == self.bot.user and 'destroy' not in msg:
             return
@@ -48,24 +46,26 @@ class Manager(commands.Cog):
         if msg == msg.upper() and msg.isalnum() and not msg.isnumeric():
             await message.channel.send(f'por favor {message.author.name}, não grite.')
 
-        if chamada1 and message.author.name != ADMIN and not any(word.lower() in msg.lower() for word in insultos) \
-                and not any(word.lower() in msg for word in elogios):
+        if chamada1 and message.author.name != ADMIN and not insultar(msg) \
+                and not any(word.lower() in msg for word in elogios) and not saudacao(msg):
             await message.channel.send(f'{message.author.name} me chamou ? :eyes:')
 
-        elif chamada1 and message.author.name == ADMIN and not any(word.lower() in msg.lower() for word in insultos) \
+        elif 'noynho' in msg.lower() and message.author.name != ADMIN and not insultar(msg) \
+                and not any(word.lower() in msg for word in elogios) and not saudacao(msg):
+            await message.channel.send(f'{message.author.name} está falando de mim ? :eyes:')
+
+        elif chamada1 and message.author.name == ADMIN and not insultar(msg) \
                 and not any(word.lower() in msg.lower() for word in elogios):
             await message.channel.send(f'oi pai')
 
-        elif chamada1 and message.author.name == ADMIN and any(word.lower() in msg.lower() for word in insultos):
-            print()
+        elif chamada1 and message.author.name == ADMIN and insultar(msg):
             await message.channel.send(f'maguou :disappointed_relieved:')
 
-        elif chamada1 and any(word.lower() == msg.lower() for word in insultos):
-            palavra_sorteada = random.choice(insultos)
-            if message.author.name == 'MalrRy' and palavra_sorteada.endswith('o'):
-                palavra_sorteada.pop()
-                palavra_sorteada += 'a'
-            await message.channel.send(f'E você {message.author.name} é {palavra_sorteada} :unamused:')
+        elif chamada1 and insultar(msg):
+            palavra = insultar(msg)
+            if message.author.name == 'MalrRy':
+                palavra = insultar(msg, pronome='F')
+            await message.channel.send(f'E você {message.author.name} é {palavra} :unamused:')
 
         elif chamada1 and any(word.lower() in msg.lower() for word in elogios):
             await message.channel.send(f'Obrigado, {message.author.name} você é '
@@ -102,7 +102,7 @@ class Manager(commands.Cog):
             acao.acao(prox_dia)
             channel = self.bot.get_channel(CHANNEL)
 
-            await channel.send(f'@{message.author.name}\n{acao.message[1]}')
+            await channel.send(f'@<{message.author.id}>\n{acao.message[1]}')
 
         elif 'qual o ação em andamento' in msg.lower():
             now = datetime.datetime.now(tz=fuso)
@@ -114,7 +114,7 @@ class Manager(commands.Cog):
             acao.acao(prox_dia)
             channel = self.bot.get_channel(CHANNEL)
 
-            await channel.send(f'@{message.author.name}\n {acao.message[1]}')
+            await channel.send(f'@<{message.author.id}>\n {acao.message[1]}')
 
 
 def setup(bot):

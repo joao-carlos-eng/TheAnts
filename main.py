@@ -1,4 +1,4 @@
-from funcoes_auxiliares import criar_txt_de_folhas
+from noynho.funcoes_auxiliares import criar_txt_de_folhas
 
 if __name__ == '__main__':
     try:

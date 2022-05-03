@@ -4,7 +4,7 @@ from decouple import config
 from discord.ext import commands, tasks
 from pytz import timezone
 
-from calendario_acao_da_colonia import Acao
+from noynho.calendario_acao_da_colonia import Acao
 
 fuso = timezone('America/Sao_Paulo')
 CHANNEL = int(config('channel1'))
@@ -20,7 +20,6 @@ class Tasks(commands.Cog):
     async def on_ready(self):
         channel = self.bot.get_channel(CHANNEL)
         #   await channel.send('Eba, me atualizei.')
-
         self.acao_da_colonia.start()
 
     @tasks.loop(minutes=1)
@@ -48,18 +47,18 @@ class Tasks(commands.Cog):
         elif now.minute == 5:
 
             resp = await channel.send(f'Começou ação da colônia de \"{acao_da_colonia}\"')
-            await asyncio.sleep(25 * 60)
-            await resp.delete()
-
-        elif now.minute == 30:
-
-            resp = await channel.send(f'Estamos na metade do ação de \"{acao_da_colonia}\"')
-            await asyncio.sleep(29 * 60)
+            await asyncio.sleep(24 * 60)
             await resp.delete()
 
         elif now.minute == 15:
 
             resp = await channel.send(f'\"{acao_da_colonia}\" acaba em 15min. Fique atento')
+            await asyncio.sleep(14 * 60)
+            await resp.delete()
+
+        elif now.minute == 30:
+
+            resp = await channel.send(f'Estamos na metade do ação de \"{acao_da_colonia}\"')
             await asyncio.sleep(14 * 60)
             await resp.delete()
 
