@@ -51,7 +51,8 @@ class Manager(commands.Cog):
 
             if chamada1 and message.author.name != ADMIN and not insultar(msg) \
                     and not any(word.lower() in msg for word in elogios) and not saudacao(msg):
-                await message.channel.send(f'{message.author.name} me chamou ? :eyes:')
+                # await message.channel.send(f'{message.author.name} me chamou ? :eyes:')
+                await message.channel.send()
 
             elif 'noynho' in msg.lower() and message.author.name != ADMIN and not insultar(msg) \
                     and not any(word.lower() in msg for word in elogios) and not saudacao(msg):

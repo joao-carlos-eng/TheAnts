@@ -1,5 +1,8 @@
-requests
-gspread
-pytz
-discord.py
+requests==2.27.1
+gspread==5.3.2
+pytz==2022.1
+ChatterBot==1.0.4
+ChatterBot-corpus
+awscli==1.11.18
 python-decouple
+Discord.py

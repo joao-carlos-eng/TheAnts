@@ -1,7 +1,9 @@
+import json
 import requests
 
 from conexao_sheets import plan
 from conexao_fire_base import get
+
 # import json
 # import csv
 # import gzip
@@ -79,7 +81,6 @@ def dictionary(palavra):
     soup.find_all(class_='vmod')
     return soup.find_all(class_='vmod')"""
 
-
 """def encode(name):
     ascii_name = normalize("NFKD", name).encode("ascii", errors="ignore").decode("ascii")
     return ascii_name.upper()
@@ -108,6 +109,14 @@ def classify_download(name):
     name_data = load_data()
     encoded_name = encode(name)
     return name_data[encoded_name]"""
+
+
+def get_quote():
+    response = requests.get("https://zenquotes.io/api/random")
+    json_data = json.loads(response.text)
+    quote = json_data[0]['q'] + " -" + json_data[0]['a']
+    return quote
+
 
 if __name__ == '__main__':
     ...

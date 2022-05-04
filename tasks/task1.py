@@ -18,8 +18,6 @@ class Tasks(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        channel = self.bot.get_channel(CHANNEL)
-        #   await channel.send('Eba, me atualizei.')
         self.acao_da_colonia.start()
 
     @tasks.loop(minutes=1)
