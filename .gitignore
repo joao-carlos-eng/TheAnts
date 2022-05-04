@@ -158,6 +158,11 @@ noynho/.env
 noynho/.env
 noynho/conversas.txt
 >>>>>>> Stashed changes
+<<<<<<< HEAD
 .env
 .env
 credentials.json
+=======
+conversas.txt
+database.sqlite3
+>>>>>>> v.2.5

@@ -7,4 +7,3 @@ DIAS = [
     'Dia 6:Sábado',
     'Dia 7:Domingo'
 ]
-

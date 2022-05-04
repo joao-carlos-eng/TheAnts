@@ -5,4 +5,4 @@ ChatterBot==1.0.4
 ChatterBot-corpus
 awscli==1.11.18
 python-decouple
-Discord.py
+discord.py

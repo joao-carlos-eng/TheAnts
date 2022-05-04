@@ -14,7 +14,7 @@ class Talks(commands.Cog):
     async def send_hello(self, ctx):
         await ctx.send('comando invalido !')
 
-    @commands.command(name='acorda')
+    @commands.command(name='acorda', help="comando de admin")
     async def i_be_back(self, ctx, cnt=None):
         name = ctx.author.name
 
@@ -52,7 +52,7 @@ class Talks(commands.Cog):
                 'Segundo a lenda, embora Apolo não fosse considerado bom esportista, era um arqueiro de grande '
                 'habilidade.')
         else:
-            return 
+            return
 
     @commands.command(name='dormir')
     async def sleep(self, ctx):

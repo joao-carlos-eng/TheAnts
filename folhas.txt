@@ -38,9 +38,9 @@ Ninho Especial,1141010084
 Habitat especial de formigas,1270197934
 Conjunto de Mutação,1567030899
 Centro de Construção,152741473
-Ninho de formigas guardiãs,1030059952
-Ninho de formigas atiradoras,482266080
-Ninho de formigas transportadoras,60010515
+Quartel de guardiãs,1030059952
+Quartel de atiradoras,482266080
+Quartel de transportadoras,60010515
 Piscina de Cura,1239779616
 Fungos Tóxicos,1008693996
 Árvore Sentinela,1749528062
