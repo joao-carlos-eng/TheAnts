@@ -1,5 +1,15 @@
+import json
+import requests
+
 from conexao_sheets import plan
 from conexao_fire_base import get
+
+# import json
+# import csv
+# import gzip
+# import io
+# from bs4 import BeautifulSoup
+# from unicodedata import normalize
 
 sheets = plan.worksheets()
 
@@ -29,7 +39,6 @@ def consultar_edificio(nome, nivel):
 
     result = ''
     for k, v in response.items():
-        text = ''
         if 'Tempo (h:m:s)' in k:
             text = k.replace('Tempo (h:m:s)', 'Tempo(h:mn:s)')
         elif 'time(h:m:s)' in k:
@@ -58,8 +67,63 @@ def listar_edificios():
     return result
 
 
+"""def encode(name):
+    ascii_name = normalize("NFKD", name).encode("ascii", errors="ignore").decode("ascii")
+    return ascii_name.upper()
+
+
+def dictionary(palavra):
+    encoded_name = encode(palavra)
+    url = f"https://www.google.com/search?q={palavra}&oq={palavra}&aqs=chrome.0.69i59j0i512l5j69i60j69i61" \
+          ".2671j1j4&sourceid=chrome&ie=UTF-8 "
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    soup.find_all(class_='vmod')
+    return soup.find_all(class_='vmod')"""
+
+"""def encode(name):
+    ascii_name = normalize("NFKD", name).encode("ascii", errors="ignore").decode("ascii")
+    return ascii_name.upper()
+
+
+def classify_api(name):
+    encoded_name = encode(name)
+    url = "https://brasil.io/api/dataset/genero-nomes/nomes/data?first_name=" + encoded_name
+    response = urlopen(url)
+    json_response = json.loads(response.read())
+    return json_response["results"][0]["classification"]
+
+
+def load_data():
+    fobj = io.TextIOWrapper(gzip.open("nomes.csv.gz"), encoding="utf-8")
+    csv_reader = csv.DictReader(fobj)
+    data = {
+        row["first_name"]: row["classification"]
+        for row in csv_reader
+    }
+    fobj.close()
+    return data
+
+
+def classify_download(name):
+    name_data = load_data()
+    encoded_name = encode(name)
+    return name_data[encoded_name]"""
+
+
+def get_quote():
+    response = requests.get("https://zenquotes.io/api/random")
+    json_data = json.loads(response.text)
+    quote = json_data[0]['q'] + " -" + json_data[0]['a']
+    return quote
+
+
 if __name__ == '__main__':
+    ...
     # txt = open('saida.txt', 'w+')
     # txt.write(consultar_edificio("rainha", 1))
-    print(consultar_edificio("rainha", 1))
-    listar_edificios()
+
+    # print(consultar_edificio("rainha", 1))
+    # listar_edificios()
+
+    # print(dictionary("malrry"))
