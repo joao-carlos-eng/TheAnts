@@ -1,8 +1,6 @@
 from decouple import config
 from discord.ext import commands
 
-from manager import cb
-
 ADMIN = config('admin')
 
 

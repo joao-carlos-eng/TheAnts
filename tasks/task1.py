@@ -37,26 +37,25 @@ class Tasks(commands.Cog):
 
         acao_da_colonia = self.last_acao.acao_da_colonia
         if now.minute == 0:
-            msg = '\n'.join(self.last_acao.message)
-            resp = await channel.send(msg)
+            resp = await channel.send(acao_da_colonia.messege)
             await asyncio.sleep(4 * 60)
             await resp.delete()
 
         elif now.minute == 5:
 
-            resp = await channel.send(f'Começou ação da colônia de \"{acao_da_colonia}\"')
+            resp = await channel.send(acao_da_colonia.messege)
             await asyncio.sleep(24 * 60)
-            await resp.delete()
-
-        elif now.minute == 15:
-
-            resp = await channel.send(f'\"{acao_da_colonia}\" acaba em 15min. Fique atento')
-            await asyncio.sleep(14 * 60)
             await resp.delete()
 
         elif now.minute == 30:
 
             resp = await channel.send(f'Estamos na metade do ação de \"{acao_da_colonia}\"')
+            await asyncio.sleep(14 * 60)
+            await resp.delete()
+
+        elif now.minute == 45:
+
+            resp = await channel.send(f'\"{acao_da_colonia}\" acaba em 15min. Fique atento.')
             await asyncio.sleep(14 * 60)
             await resp.delete()
 

@@ -106,7 +106,8 @@ class Manager(commands.Cog):
                 acao.acao(prox_dia)
                 channel = self.bot.get_channel(CHANNEL)
 
-                await channel.send(f'<@{message.author.id}>\n{acao.message[1]}')
+                await message.channel.send(f'<@{message.author.id}> irei te responder no canal do \'ação da colonia\'')
+                await channel.send(f'<@{message.author.id}>\n{acao.acao_da_colonia}')
 
             elif 'qual o ação em andamento' in msg.lower():
                 now = datetime.datetime.now(tz=fuso)
@@ -118,7 +119,8 @@ class Manager(commands.Cog):
                 acao.acao(prox_dia)
                 channel = self.bot.get_channel(CHANNEL)
 
-                await channel.send(f'<@{message.author.id}>\n {acao.message[1]}')
+                await message.channel.send(f'<@{message.author.id}> irei te responder no canal do \'ação da colonia\'')
+                await channel.send(f'<@{message.author.id}>\n {acao.acao_da_colonia}')
         else:
             if 'qual o próximo ação da colônia' in msg.lower():
 
@@ -132,7 +134,7 @@ class Manager(commands.Cog):
                 acao.acao(prox_dia)
                 channel = self.bot.get_channel(CHANNEL)
 
-                await channel.send(f'<@{message.author.id}>\n{acao.message[1]}')
+                await channel.send(f'<@{message.author.id}>\n{acao.acao_da_colonia}')
 
             elif 'qual o ação em andamento' in msg.lower():
                 now = datetime.datetime.now(tz=fuso)
@@ -144,7 +146,7 @@ class Manager(commands.Cog):
                 acao.acao(prox_dia)
                 channel = self.bot.get_channel(CHANNEL)
 
-                await channel.send(f'@<{message.author.id}>\n {acao.message[1]}')
+                await channel.send(f'@<{message.author.id}>\n {acao.acao_da_colonia}')
             else:
 
                 autor = message.author.id
