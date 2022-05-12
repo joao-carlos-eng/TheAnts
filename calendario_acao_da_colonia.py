@@ -62,6 +62,7 @@ class Acao:
                 # print(f'Estamos na fase de intervalo, o proximo ação começa em {5 - self.minute}')
                 self.message = f'Estamos na fase de intervalo, o proximo ação começa em {5 - self.minute} min'
                 # print(f'{self.plan.cell(line, 1).value} ==> {self.plan.cell(line, 2).value}')
+
                 self.message = f'{self.plan.cell(line, 1).value} ==> {self.plan.cell(line, 2).value}'
                 self.message = self.plan.cell(line, 3).value
 

@@ -153,7 +153,7 @@ class Manager(commands.Cog):
                 msg2 = await message.channel.send(
                     f'<@{autor}> por favor, evite assuntos paralelos nesse canal.\n'
                     f'Para conversas aleatórias se diriga a algum dos \'burburinhos\'')
-                await asyncio.sleep(5)
+                await asyncio.sleep(10)
                 await msg2.delete()
                 await message.delete()
 
